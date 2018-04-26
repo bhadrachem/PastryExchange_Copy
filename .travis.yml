@@ -17,7 +17,7 @@ script:
   - docker-compose up -d
   - docker ps -a
   - sleep 200
-  - docker exec models bash -c "python manage.py test"
+  - docker exec models_layer bash -c "python manage.py test"
   - docker ps -a
 #  - pip install selenium
 #  - WEB_APP_IP=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' haproxy)

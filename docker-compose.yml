@@ -1,6 +1,6 @@
 models:
     image: tp33/django
-    container_name: models
+    container_name: models_layer
     external_links:
       -  mysql:db
     volumes:
