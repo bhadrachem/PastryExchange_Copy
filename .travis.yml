@@ -1,5 +1,25 @@
-language: ruby
-rvm:
- - 2.2
- - jruby
- - rbx-3
+language: python
+
+services:
+  - docker
+
+install:
+  - sudo pip install docker-compose
+
+script:
+  - docker pull mysql:5.7.14
+  - docker pull haproxy:1.7
+  - mkdir -p ~/cs4501/app
+  - mkdir -p ~/cs4501/db
+  - docker run --name mysql -d -e MYSQL\_ROOT\_PASSWORD='$3cureUS' -v ~/cs4501/db:/var/lib/mysql  mysql:5.7.14
+  - docker ps -a
+  - cd haproxy
+  - docker build -t my-haproxy .
+  - cd ..
+  - docker-compose up -d
+  - docker ps -a
+  - sleep 75
+
+notifications:
+  emails:
+    - bhc9av@virginia.edu
