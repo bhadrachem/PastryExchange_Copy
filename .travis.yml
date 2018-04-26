@@ -8,14 +8,11 @@ install:
 
 script:
   - docker pull mysql:5.7.14
-  - docker pull tp33/django
   - docker pull haproxy:1.7
   - mkdir -p ~/cs4501/app
   - mkdir -p ~/cs4501/db
-  - docker run -it --name web -v ~/cs4501/app:/app tp33/django
   - docker run --name mysql -d -e MYSQL\_ROOT\_PASSWORD='$3cureUS' -v ~/cs4501/db:/var/lib/mysql  mysql:5.7.14
   - docker ps -a\
-  - docker run -it --name mysql-cmdline --link mysql:db mysql:5.7.14 bashdocker run -it --name mysql-cmdline --link mysql:db mysql:5.7.14 bash
   - docker build -t haproxy:1.7
   - docker-compose up
   - docker ps -a
