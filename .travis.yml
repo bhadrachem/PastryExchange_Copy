@@ -16,14 +16,11 @@ script:
 #  - docker build haproxy:1.7
   - docker-compose up -d
   - docker ps -a
-  - sleep 200
-  - docker exec models_layer bash -c "python manage.py test"
+  - sleep 100
+#  - docker exec models bash -c "python manage.py test"
   - docker ps -a
 #  - pip install selenium
 #  - WEB_APP_IP=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' haproxy)
 #  - SELENIUM_IP=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' selenium)
 #  - python unitTestSel.py ${SELENIUM_IP} ${WEB_APP_IP}
 
-notifications:
-  emails:
-    - bhc9av@virginia.edu
